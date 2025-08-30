@@ -279,18 +279,21 @@ export class ToolboxCategory
    *
    * @returns The span that holds the category icon.
    */
-  protected createIconDom_(): Element {
-    const toolboxIcon = document.createElement('span');
-    if (!this.parentToolbox_.isHorizontal()) {
-      const className = this.cssConfig_['icon'];
-      if (className) {
-        dom.addClass(toolboxIcon, className);
-      }
-    }
+   protected createIconDom_(): Element {
+     const toolboxIcon = document.createElement('span');
+     if (!this.parentToolbox_.isHorizontal()) {
+       const baseClass = this.cssConfig_['icon'];
+       if (baseClass) {
+         dom.addClass(toolboxIcon, baseClass); // Default icon class
+       }
 
-    toolboxIcon.style.display = 'inline-block';
-    return toolboxIcon;
-  }
+       // Add category-specific icon class
+       const iconClass = `blocklyIcon-${this.name_.toLowerCase().replace(/\s+/g, '-')}`;
+       dom.addClass(toolboxIcon, iconClass);
+     }
+     toolboxIcon.style.display = 'inline-block';
+     return toolboxIcon;
+   }
 
   /**
    * Creates the span that holds the category label.
@@ -666,6 +669,19 @@ export type CssConfig = ToolboxCategory.CssConfig;
 
 /** CSS for Toolbox.  See css.js for use. */
 Css.register(`
+  .blocklyToolboxCategoryIcon {
+     width: 16px;
+     height: 16px;
+     margin-right: 6px;
+     background-size: contain;
+     background-repeat: no-repeat;
+     visibility: visible;
+  }
+
+  .blocklyIcon-events {
+    background-image: url('/icons/events.svg'); /* Replace with your actual path */
+  }
+  
 .blocklyToolboxCategory:not(.blocklyToolboxSelected):hover {
   background-color: rgba(255, 255, 255, .2);
 }
