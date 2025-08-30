@@ -15,6 +15,7 @@ import * as procedures from './procedures.js';
 import * as texts from './text.js';
 import * as variables from './variables.js';
 import * as variablesDynamic from './variables_dynamic.js';
+import * as events from './events.js';
 
 export {
   lists,
