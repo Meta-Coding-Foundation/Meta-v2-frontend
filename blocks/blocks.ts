@@ -25,6 +25,7 @@ export {
   texts,
   variables,
   variablesDynamic,
+  events,
 };
 
 /**
@@ -41,4 +42,5 @@ export const blocks: {[key: string]: BlockDefinition} = Object.assign(
   texts.blocks,
   variables.blocks,
   variablesDynamic.blocks,
+  events.blocks,
 );
